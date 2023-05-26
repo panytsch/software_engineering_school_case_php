@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -16,9 +15,8 @@ class CurrentRateEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public readonly float $rate)
     {
-        //
     }
 
     /**
@@ -27,7 +25,7 @@ class CurrentRateEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Current Rate Email',
+            subject: 'Current rate BTC to UAH',
         );
     }
 
@@ -37,7 +35,7 @@ class CurrentRateEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.rate',
         );
     }
 
