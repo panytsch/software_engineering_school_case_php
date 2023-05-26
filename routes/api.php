@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\RateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::get('/test', function () {
     return \Illuminate\Support\Facades\Response::json(['status' => 'ok']);
 });
+
+Route::get('/rate', RateController::class);
