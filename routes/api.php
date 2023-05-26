@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RateController;
+use App\Http\Controllers\SubscribeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/test', function () {
-    return \Illuminate\Support\Facades\Response::json(['status' => 'ok']);
-});
-
 Route::get('/rate', RateController::class);
+Route::post('/subscribe', SubscribeController::class);
