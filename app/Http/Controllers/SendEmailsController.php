@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\CurrentRateEmail;
 use App\Services\Rate\RateService;
-use App\Storage\EmailStorage;
+use App\Storage\EmailStorageInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response as SymphonyResponse;
 
 class SendEmailsController extends Controller
 {
-    public function __invoke(EmailStorage $emailStorage, RateService $rateService): JsonResponse
+    public function __invoke(EmailStorageInterface $emailStorage, RateService $rateService): JsonResponse
     {
         $rateResponse = $rateService->getCurrentRate();
 
