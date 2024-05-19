@@ -23,7 +23,7 @@ class SubscribeController extends Controller
 
         $email = $request->input('email');
 
-        CurrencyRateSubscriberFactory::new(['email' => $email])->create();
+        CurrencyRateSubscriberFactory::new(['email' => trim($email)])->create();
 
         return Response::json(null);
     }

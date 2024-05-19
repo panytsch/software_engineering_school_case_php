@@ -15,7 +15,7 @@ class SubscriberExists implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $emailAlreadyAdded = CurrencyRateSubscriber::query()->where('email', '=', $value)->exists();
+        $emailAlreadyAdded = CurrencyRateSubscriber::query()->where('email', '=', trim($value))->exists();
         if ($emailAlreadyAdded) {
             $fail($attribute . ' already exists.');
         }
