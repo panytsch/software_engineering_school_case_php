@@ -33,7 +33,7 @@ class SendRatesCommand extends Command
     {
         $rate = $currencyRate->rate(Currencies::USD, Currencies::UAH);
 
-        $subscribers = CurrencyRateSubscriber::query()->lazy()->sortBy('created_at');
+        $subscribers = CurrencyRateSubscriber::query()->orderBy('created_at')->lazy();
         foreach ($subscribers as $subscriber) {
             Log::info("Sending currency rate for subscriber {$subscriber->email}");
 
